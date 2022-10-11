@@ -1,0 +1,14 @@
+.feeback-button-type {
+    width: 100px;
+    margin-right: 10px;
+    font-size: 18px;
+    border-radius: 10px;
+    background-color: transparent;
+}
+.feeback-button-type:hover {
+    background-color: #000;
+    color: #fff;
+}
+.stats {
+    list-style: none;
+}
