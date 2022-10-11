@@ -5,19 +5,43 @@ export const FeedbackOptions = ({
   options,
   onAddFeedback
 }) => {
+  const { good, neutral, bad } = options
   return (
-    <ul className="feedback">
-      {options.map(key => (
+    <ul className="feedback-option-list">
+      <li>
+        <button
+        className="feeback-button-type"
+        key="good"
+        name="good"
+        type="button"
+        onClick={onAddFeedback}
+        >
+          good
+        </button>
+      </li>
+      <li>
         <button
           className="feeback-button-type"
-          key={key}
-          name={key}
+          key="neutral"
+          name="neutral"
           type="button"
           onClick={onAddFeedback}
         >
-          {key}
+          neutral
         </button>
-      ))}
+      </li>
+      <li>
+        <button
+          className="feeback-button-type"
+          key="bad"
+          name="bad"
+          type="button"
+          onClick={onAddFeedback}
+        >
+          bad
+      </button>
+
+      </li>
     </ul>
   );
 };

@@ -1,69 +1,67 @@
-import React from "react";
+import { useState, useMemo } from "react";
 import { FeedbackOptions } from './feedbackOptions';
 import { Statistic } from './statistic';
 import { Section } from './section';
 import './feedback-styles.css';
 
-class Feedback extends React.Component {
-    state = {
-        good: 0,
-        neutral: 0,
-        bad: 0,
-    };
+const Feedback = () => {
 
-    handleAddFeedback = event => {
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
+
+  const handleAddFeedback = event => {
     const key = event.target.name;
-    this.setState(prevState => {
-        return { [key]: prevState[key] + 1 };
-    });
-    };
+    switch (key) {
+      case 'good':
+        setGood(good + 1);
+        break;
+      case 'bad':
+        setBad(bad + 1);
+        break;
+      case 'neutral':
+        setNeutral(neutral + 1);
+        break;
+      default:
+        return
+    }
+  };
 
-    countTotalFeedback() {
-      const {
-        good,
-        neutral,
-        bad
-      } = this.state;
+  const countTotalFeedback = () => {
     return good + neutral + bad;
-    };
+  };
 
-    countPositiveFeedbackPercentage() {
-      const {
-        good,
-        neutral,
-        bad
-      } = this.state;
-    const total = good + neutral + bad;
-    if (!total) {
-        return 0;
-        };
-    return Math.round((good / total) * 100);
-    };
-
-    render() {
-    const total = this.countTotalFeedback();
-    const positivePercentage = this.countPositiveFeedbackPercentage();
-    const { good, neutral, bad,} = this.state;  
-    return (
-      <div className="feedback">
-        <Section title="Please leave feedback">
-          <FeedbackOptions
-            onAddFeedback={this.handleAddFeedback}
-            options={Object.keys(this.state)}
-          />
-        </Section>
-        <Section title="Statistics">
-          <Statistic
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={total}
-            positivePercentage={positivePercentage}
-          />
-        </Section>
-      </div>
-    );
-  }
+  const countPositiveFeedbackPercentage = () => {
+  const total = good + neutral + bad;
+  if (!total) {
+      return 0;
+      };
+  return Math.round((good / total) * 100);
+  };
+ 
+  return (
+    <div className="feedback">
+      <Section title="Please leave feedback">
+        <FeedbackOptions
+          onAddFeedback={handleAddFeedback}
+          options={{
+            good: good,
+            neutral: neutral,
+            bad: bad
+          }}
+        />
+      </Section>
+      <Section title="Statistics">
+        <Statistic
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          total={countTotalFeedback()}
+          positivePercentage={countPositiveFeedbackPercentage()}
+        />
+      </Section>
+    </div>
+  );
 }
 
 export default Feedback

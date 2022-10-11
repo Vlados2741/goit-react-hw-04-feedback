@@ -1,3 +1,7 @@
+.feedback-option-list {
+    list-style: none;
+    display: flex;
+}
 .feeback-button-type {
     width: 100px;
     margin-right: 10px;
