@@ -5,7 +5,6 @@ export const FeedbackOptions = ({
   options,
   onAddFeedback
 }) => {
-  const { good, neutral, bad } = options
   return (
     <ul className="feedback-option-list">
       <li>
