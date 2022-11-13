@@ -1,11 +1,10 @@
-import { useState, useMemo } from "react";
+import { useState } from 'react';
 import { FeedbackOptions } from './feedbackOptions';
 import { Statistic } from './statistic';
 import { Section } from './section';
 import './feedback-styles.css';
 
 const Feedback = () => {
-
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
@@ -23,7 +22,7 @@ const Feedback = () => {
         setNeutral(neutral + 1);
         break;
       default:
-        return
+        return;
     }
   };
 
@@ -32,13 +31,13 @@ const Feedback = () => {
   };
 
   const countPositiveFeedbackPercentage = () => {
-  const total = good + neutral + bad;
-  if (!total) {
+    const total = good + neutral + bad;
+    if (!total) {
       return 0;
-      };
-  return Math.round((good / total) * 100);
+    }
+    return Math.round((good / total) * 100);
   };
- 
+
   return (
     <div className="feedback">
       <Section title="Please leave feedback">
@@ -47,7 +46,7 @@ const Feedback = () => {
           options={{
             good: good,
             neutral: neutral,
-            bad: bad
+            bad: bad,
           }}
         />
       </Section>
@@ -62,6 +61,6 @@ const Feedback = () => {
       </Section>
     </div>
   );
-}
+};
 
-export default Feedback
+export default Feedback;
