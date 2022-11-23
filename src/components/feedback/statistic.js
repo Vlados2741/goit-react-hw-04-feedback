@@ -1,19 +1,17 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
-
 
 export const Statistic = ({
   good,
   neutral,
   bad,
   total,
-  positivePercentage
+  positivePercentage,
 }) => {
-  
   if (good === 0 && neutral === 0 && bad === 0) {
     return <p className="none-feedback">There is no feedback</p>;
   }
-  
+
   return (
     <ul className="stats">
       <li className="stats-item">

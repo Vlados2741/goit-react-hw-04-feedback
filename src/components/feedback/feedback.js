@@ -13,14 +13,11 @@ const Feedback = () => {
     const key = event.target.name;
     switch (key) {
       case 'good':
-        setGood(good + 1);
-        break;
-      case 'bad':
-        setBad(bad + 1);
-        break;
+        return setGood(prevState => prevState + 1);
       case 'neutral':
-        setNeutral(neutral + 1);
-        break;
+        return setNeutral(prevState => prevState + 1);
+      case 'bad':
+        return setBad(prevState => prevState + 1);
       default:
         return;
     }
@@ -31,7 +28,7 @@ const Feedback = () => {
   };
 
   const countPositiveFeedbackPercentage = () => {
-    const total = good + neutral + bad;
+    const total = countTotalFeedback();
     if (!total) {
       return 0;
     }

@@ -1,20 +1,16 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 
-export const FeedbackOptions = ({
-  options,
-  onAddFeedback
-}) => {
-  const { good, neutral, bad } = options
+export const FeedbackOptions = ({ onAddFeedback }) => {
   return (
     <ul className="feedback-option-list">
       <li>
         <button
-        className="feeback-button-type"
-        key="good"
-        name="good"
-        type="button"
-        onClick={onAddFeedback}
+          className="feeback-button-type"
+          key="good"
+          name="good"
+          type="button"
+          onClick={onAddFeedback}
         >
           good
         </button>
@@ -39,8 +35,7 @@ export const FeedbackOptions = ({
           onClick={onAddFeedback}
         >
           bad
-      </button>
-
+        </button>
       </li>
     </ul>
   );
